@@ -158,20 +158,20 @@
      .zoomOutImage {
        animation-name: zoomOutImage;
     }
-    
+
     .slider .slick-prev,
     .slider .slick-next {
-        font-size: 24px; 
-        color: #fff; 
-        padding: 10px; 
-        border-radius: 5px; 
-        position: absolute; 
-        top: 50%; 
-        transform: translateY(-50%); 
-        z-index: 1; 
-        cursor: pointer; 
+        font-size: 24px;
+        color: #fff;
+        padding: 10px;
+        border-radius: 5px;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 1;
+        cursor: pointer;
         opacity: 0;
-        transition: opacity 0.3s ease; 
+        transition: opacity 0.3s ease;
         border-color: transparent;
         background-color: transparent;
         font-weight: bold;
@@ -190,26 +190,26 @@
 
     .slick-prev:hover,
     .slick-next:hover {
-        color: #555; 
+        color: #555;
     }
 
     .slick-dots button {
-        font-size: 14px; 
-        color: #333; 
-        color: #fff; 
-        border: 2px solid #333; 
-        border-radius: 50%; 
-        width: 20px; 
-        height: 20px; 
-        margin: 0 5px; 
-        cursor: pointer; 
-        transition: color 0.3s ease; 
+        font-size: 14px;
+        color: #333;
+        color: #fff;
+        border: 2px solid #333;
+        border-radius: 50%;
+        width: 20px;
+        height: 20px;
+        margin: 0 5px;
+        cursor: pointer;
+        transition: color 0.3s ease;
     }
 
     .slick-dots button:hover,
     .slick-dots button.slick-active {
-        color: #333; 
-        color: #fff; 
+        color: #333;
+        color: #fff;
     }
 
     .multiple-slide .slide{
@@ -219,17 +219,17 @@
 
     .multiple-slide .slick-prev,
     .multiple-slide .slick-next {
-        font-size: 24px; 
-        color: #72747C; 
-        padding: 10px; 
-        border-radius: 5px; 
-        position: absolute; 
-        top: 140px; 
-        transform: translateY(-50%); 
-        z-index: 1; 
-        cursor: pointer; 
+        font-size: 24px;
+        color: #72747C;
+        padding: 10px;
+        border-radius: 5px;
+        position: absolute;
+        top: 140px;
+        transform: translateY(-50%);
+        z-index: 1;
+        cursor: pointer;
         opacity: 0;
-        transition: opacity 0.3s ease; 
+        transition: opacity 0.3s ease;
         border-color: transparent;
         background-color: transparent;
         font-weight: bold;
@@ -255,7 +255,7 @@
       z-index: 1;
       background: linear-gradient(to left, #fafbfd 15%, transparent 100%);
     }
-    
+
     .gradient-overlay-izquierda {
       position: absolute;
       top: 0;
@@ -299,7 +299,7 @@
         font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     }
 
-    
+
     .container2 .body-item {
         display: flex;
         flex-direction: column;
@@ -420,8 +420,8 @@
         background: rgba(0, 0, 0, 0.5);
         border: 0.1em solid rgba(255, 255, 255, 0.5);
     }
-    
-    
+
+
 
     .description {
         font-weight: 300;
@@ -452,7 +452,7 @@
         color: white;
     }
 
-    
+
 
     @media only screen and (max-width: 768px) {
         .image-container {
@@ -527,7 +527,7 @@
         <div class="slide">
             <div class="slide__img">
                 <img src="{{ $pelicula->imagen_h }}" alt="{{ $pelicula->nombre }}" data-lazy="{{ $pelicula->h }}" class="full-image animated" data-animation-in="zoomInImage" style="width: 100%;" />
-                <div class="desvanecimiento"></div>
+                <!-- <div class="desvanecimiento"></div> -->
 
             </div>
             <div class="slide__content">
@@ -536,8 +536,8 @@
                     <p class="animated" data-animation-in="fadeInUp" data-delay-in="0.3">{{ substr($pelicula->descripcion, 0, 100)  }} ...</p>
                     <a href="{{ route('peliculas.ver', $pelicula->codigo ) }}"class="btn btn-default animated p-4" data-animation-in="fadeInUp">
                         <span class="btn-label">
-                            <i class="fa fa-play"></i> 
-                        </span> 
+                            <i class="fa fa-play"></i>
+                        </span>
                          <b>Ver Ahora</b>
                     </a>
                 </div>
@@ -549,17 +549,17 @@
 </header>
 @foreach ($data as $value)
     <div class="cont-films">
-        <h2>{{ $value['categoria']}}</h2>    
+        <h2> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{ $value['categoria']}}</h2>
         <div class="gradient-overlay-derecha"></div>
         <div class="gradient-overlay-izquierda"></div>
         <section class="multiple-slide slide image-group">
             @foreach ($value['peliculas'] as $pelicula)
                 <div class="container2">
-                    <div onclick="redirectToPage('{{ route('peliculas.ver', $pelicula->codigo ) }}')" 
-                    class="image-container" onmouseenter="hoverEffect(this, event)" 
-                    onmouseleave="resetEffect(this)" 
-                    style="background-image: url({{$pelicula->imagen_v}}); background-size: 100% auto;" 
-                    data-image-primary="{{$pelicula->imagen_v}}" 
+                    <div onclick="redirectToPage('{{ route('peliculas.ver', $pelicula->codigo ) }}')"
+                    class="image-container" onmouseenter="hoverEffect(this, event)"
+                    onmouseleave="resetEffect(this)"
+                    style="background-image: url({{$pelicula->imagen_v}}); background-size: 100% auto;"
+                    data-image-primary="{{$pelicula->imagen_v}}"
                     data-image-secondary="{{$pelicula->imagen_h}}">
                         <div class="body-item">
                             <div class="body-item-1">
@@ -589,6 +589,25 @@
                     </div>
                 </div>
             @endforeach
+            <div class="container2">
+                <form action="{{ route('peliculas.buscar') }}" method="POST">
+                     @csrf <!-- Agregar token CSRF -->
+
+
+                     <div class="image-container text-center" style="color: #fff; background-image: url(https://images.unsplash.com/photo-1636155360565-3b8cf5c082a7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDEwfHx8ZW58MHx8fHx8&w=1000&q=80); background-size: 100% auto;">
+
+                        <input type="hidden" name="categorias[]" value="{{ $value['categoria_id'] }}" checked>
+                        <input type="hidden" name="categoria_name" value="{{ $value['categoria_name'] }}" checked>
+
+                        <br><br>
+                        <button type="submit" style="border: none; color: #fff;cursor: pointer;">
+                            <i class="fa fa-film" style="font-size: 30px;"></i>
+                            <h2>Ver Más</h2>
+                        </button>
+                    </div>
+
+                </form>
+            </div>
         </section>
     </div>
 @endforeach
@@ -606,7 +625,7 @@
             url: `/peliculas/like/${id}`,
             dataType: 'json',
             success: function (data) {
-                var claseActual = likeButton.attr('class'); 
+                var claseActual = likeButton.attr('class');
                 likeButton.removeClass(claseActual);
                 if (claseActual == 'far fa-heart') {
                     likeButton.addClass('fas fa-heart');
@@ -628,7 +647,7 @@
             url: `/peliculas/playlist/${id}`,
             dataType: 'json',
             success: function (data) {
-                var claseActual = likeButton.attr('class'); 
+                var claseActual = likeButton.attr('class');
                 likeButton.removeClass(claseActual);
                 if (claseActual == 'fas fa-plus') {
                     likeButton.addClass('fas fa-check');
@@ -672,7 +691,7 @@
                 element.style.zIndex = "1";
                 element.style.background = "linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.9)), url(" + dataImage + ")";
                 element.style.backgroundSize = "100% 100%";
-                
+
                 element.style.width = "40vw";
                 element.style.height = "22vw";
                 element.style.transition = "1s";
@@ -684,10 +703,10 @@
                 element.style.width = "40vw";
                 element.style.height = "22vw";
                 element.style.transition = "1s";
-                element.style.transform = "translateX(-100%)"; 
+                element.style.transform = "translateX(-100%)";
                 element.style.marginLeft = "190px";
             }
-            
+
         }
     }
 
@@ -743,13 +762,13 @@
 
     $('.multiple-slide').on('afterChange', function(event, slick, currentSlide){
         var contFilms = $(this).closest('.cont-films');
-        
+
         var ladoDerecho = contFilms.find('.gradient-overlay-derecha');
         var ladoIzquierdo = contFilms.find('.gradient-overlay-izquierda');
 
         var slickPrev = contFilms.find('.slick-prev');
         var slickNext = contFilms.find('.slick-next');
-        
+
         slickPrev.toggle(currentSlide > 0);
         ladoIzquierdo.toggle(currentSlide > 0);
 
@@ -760,7 +779,7 @@
 
     $('.slider').slick({
         autoplay: true,
-        autoplaySpeed: 7000, 
+        autoplaySpeed: 7000,
         speed: 800,
         lazyLoad: 'progressive',
         arrows: true,

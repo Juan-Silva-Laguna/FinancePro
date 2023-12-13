@@ -45,7 +45,7 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/testimonios/show/{id}', [TestimonioController::class, 'mostrarTestimonio'])->name('testimonios.show');
 
-    
+
     Route::get('/testimonios/propios', [TestimonioController::class, 'misTestimonios'])->name('testimonios.mios');
     Route::get('/testimonios/me_gustaron', [TestimonioController::class, 'meGustaron'])->name('testimonios.me_gustaron');
 
@@ -62,6 +62,10 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/peliculas/like/{id}', [PeliculasController::class, 'like'])->name('like.peliculas');
     Route::get('/peliculas/playlist/{id}', [PeliculasController::class, 'playlist'])->name('playlist.peliculas');
+
+    //--------falta ajustar los filtros para estas vistas
+    Route::get('/peliculas/mi_lista', [PeliculasController::class, 'buscarMiLista'])->name('peliculas.buscar');
+    Route::get('/peliculas/me_gustan', [PeliculasController::class, 'buscarMeGustan'])->name('peliculas.buscar');
 
 
 

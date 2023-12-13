@@ -9,7 +9,7 @@
        font-size: 1.6rem;
        font-family: 'Montserrat', sans-serif;
     }
- 
+
 
 * {
 	 margin: 0;
@@ -123,7 +123,7 @@
 	 background: rgba(0, 0, 0, 0.5);
 	 border: 0.1em solid rgba(255, 255, 255, 0.5);
 }
-  
+
  .icon-set i:hover {
 	 font-size: 1.1vw;
 	 border-color: #fff;
@@ -260,11 +260,11 @@
                 <section class="multiple-slide slide image-group">
 
                     <div class="container2">
-                        <div onclick="redirectToPage('{{ route('peliculas.ver', $pelicula->codigo ) }}')" 
-                        class="image-container" onmouseenter="hoverEffect(this, event)" 
-                        onmouseleave="resetEffect(this)" 
-                        style="background-image: url({{$pelicula->imagen_v}}); background-size: 100% auto;" 
-                        data-image-primary="{{$pelicula->imagen_v}}" 
+                        <div onclick="redirectToPage('{{ route('peliculas.ver', $pelicula->codigo ) }}')"
+                        class="image-container" onmouseenter="hoverEffect(this, event)"
+                        onmouseleave="resetEffect(this)"
+                        style="background-image: url({{$pelicula->imagen_v}}); background-size: 100% auto;"
+                        data-image-primary="{{$pelicula->imagen_v}}"
                         data-image-secondary="{{$pelicula->imagen_h}}">
                             <div class="body-item">
                                 <div class="body-item-1">
@@ -286,23 +286,75 @@
                                     <i class="details-icon icon-chevron-down"></i>
                                 </div>
                                 <div class="icon-set body-item-6">
-                                    <i class="far fa-heart"></i>
-                                    <i class="fas fa-plus"></i>
+                                    <i class="{{$pelicula->usuario_en_like == 1 ? 'fas fa-heart' : 'far fa-heart'}}" onclick="like('{{ $pelicula->id }}')" id="like-button-{{ $pelicula->id }}"></i>
+                                    <i class="{{$pelicula->pelicula_en_lista == 1 ? 'fas fa-check' : 'fas fa-plus'}}" onclick="playlist('{{ $pelicula->id }}')" id="playlist-button-{{ $pelicula->id }}"></i>
                                     <i class="fas fa-share-alt"></i>
                                 </div>
                             </div>
                         </div>
                     </div>
-                
+
                 </section>
             </div>
         @endforeach
     </div>
 </div>
 
+
 <script>
+
+    function like(id) {
+        var likeButton = $('#like-button-' + id);
+        $.ajax({
+            type: 'GET',
+            url: `/peliculas/like/${id}`,
+            dataType: 'json',
+            success: function (data) {
+                var claseActual = likeButton.attr('class');
+                likeButton.removeClass(claseActual);
+                if (claseActual == 'far fa-heart') {
+                    likeButton.addClass('fas fa-heart');
+                }
+                else{
+                    likeButton.addClass('far fa-heart');
+                }
+            },
+            error: function (error) {
+                console.error(error);
+            }
+        });
+    }
+
+    function playlist(id) {
+        var likeButton = $('#playlist-button-' + id);
+        $.ajax({
+            type: 'GET',
+            url: `/peliculas/playlist/${id}`,
+            dataType: 'json',
+            success: function (data) {
+                var claseActual = likeButton.attr('class');
+                likeButton.removeClass(claseActual);
+                if (claseActual == 'fas fa-plus') {
+                    likeButton.addClass('fas fa-check');
+                }
+                else{
+                    likeButton.addClass('fas fa-plus');
+                }
+            },
+            error: function (error) {
+                console.error(error);
+            }
+        });
+    }
     const years = [];
     const genres = [];
+
+        genres.push({ "genero":'{{$genero}}', "id_genero":'{{$id_genero}}' });
+
+        document.getElementById('filterList').innerHTML =  `
+                <span class="filter">{{$genero}}</span>
+                <button class="closefilter" onclick="eliminarFiltroGenero('{{$id_genero}}')"><i class="fa fa-times"></i></button>
+            `;
 
     function clearInput() {
         var input = document.getElementById('inputTitulo');
@@ -388,10 +440,10 @@
         } else {
             clearBtn.style.display = 'none';
         }
-        
+
         const titulo = document.getElementById('inputTitulo').value;
         traerDatos(genres,years,titulo);
-        
+
 
         const filterListDiv = document.getElementById('filterList');
         filterListDiv.innerHTML = '';
@@ -438,11 +490,11 @@
                     <div class="col-lg-2 col-md-3 col-6  mt-4">
                         <section class="multiple-slide slide image-group">
                             <div class="container2">
-                            <div onclick="redirectToPage('{{ route('peliculas.ver', '') }} ${pelicula.codigo}')" 
-                                class="image-container" onmouseenter="hoverEffect(this, event)" 
-                                onmouseleave="resetEffect(this)" 
-                                style="background-image: url(${pelicula.imagen_v}); background-size: 100% auto;" 
-                                data-image-primary="${pelicula.imagen_v}" 
+                            <div onclick="redirectToPage('{{ route('peliculas.ver', '') }} ${pelicula.codigo}')"
+                                class="image-container" onmouseenter="hoverEffect(this, event)"
+                                onmouseleave="resetEffect(this)"
+                                style="background-image: url(${pelicula.imagen_v}); background-size: 100% auto;"
+                                data-image-primary="${pelicula.imagen_v}"
                                 data-image-secondary="${pelicula.imagen_h}">
                                     <div class="body-item">
                                         <div class="body-item-1">
@@ -471,14 +523,14 @@
                                     </div>
                                 </div>
                             </div>
-                        
+
                         </section>
                     </div>
                     `;
                 });
                 contenedor.innerHTML = pelis;
 
-                
+
 
             },
             error: function (error) {
@@ -489,7 +541,7 @@
 
 
 
-    
+
     let timeoutId;
     function hoverEffect(element, event) {
         timeoutId = setTimeout(function () {
@@ -506,7 +558,7 @@
                 element.style.zIndex = "1";
                 element.style.background = "linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.9)), url(" + dataImage + ")";
                 element.style.backgroundSize = "100% 100%";
-                
+
                 element.style.width = "40vw";
                 element.style.height = "22vw";
                 element.style.transition = "1s";
@@ -518,10 +570,10 @@
                 element.style.width = "40vw";
                 element.style.height = "22vw";
                 element.style.transition = "1s";
-                element.style.transform = "translateX(-100%)"; 
+                element.style.transform = "translateX(-100%)";
                 element.style.marginLeft = "190px";
             }
-            
+
         }
     }
 
