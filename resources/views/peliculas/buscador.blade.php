@@ -348,14 +348,14 @@
     }
     const years = [];
     const genres = [];
+        @if($id_genero!=null)
+            genres.push({ "genero":'{{$genero}}', "id_genero":'{{$id_genero}}' });
 
-        genres.push({ "genero":'{{$genero}}', "id_genero":'{{$id_genero}}' });
-
-        document.getElementById('filterList').innerHTML =  `
-                <span class="filter">{{$genero}}</span>
-                <button class="closefilter" onclick="eliminarFiltroGenero('{{$id_genero}}')"><i class="fa fa-times"></i></button>
-            `;
-
+            document.getElementById('filterList').innerHTML =  `
+                    <span class="filter">{{$genero}}</span>
+                    <button class="closefilter" onclick="eliminarFiltroGenero('{{$id_genero}}')"><i class="fa fa-times"></i></button>
+                `;
+        @endif
     function clearInput() {
         var input = document.getElementById('inputTitulo');
         input.value = '';

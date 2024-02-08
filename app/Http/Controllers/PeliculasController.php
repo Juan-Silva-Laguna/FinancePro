@@ -132,7 +132,7 @@ class PeliculasController extends Controller
 
         $categorias = CategoriaPeliculaModel::select('nombre','id')->get();
 
-        return view('peliculas.buscador', ['titulo' => $texto ,'peliculas' => $result, 'categorias' => $categorias, 'agnos' => $agnos, 'id_genero' => $generos[0], 'genero' => $request->categoria_name]);
+        return view('peliculas.buscador', ['titulo' => $texto ,'peliculas' => $result, 'categorias' => $categorias, 'agnos' => $agnos, 'id_genero' => isset($generos)?$generos[0]:null, 'genero' => $request->categoria_name]);
     }
     public function buscarMiLista()
     {

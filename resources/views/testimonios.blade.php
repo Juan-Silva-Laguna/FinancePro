@@ -9,14 +9,14 @@
         .comment-input-container {
             width: 70%;
         }
-        
+
         .post img {
             max-width: 100%; /* Limita el ancho máximo al 100% del contenedor */
             max-height: 100%; /* Limita la altura máxima al 100% del contenedor */
         }
 
         .comment-input {
-            flex: 1; 
+            flex: 1;
             width: 100%;
             resize: none;
             overflow: hidden;
@@ -46,7 +46,7 @@
             resize: none;
         }
 
-        
+
 
         #file-input {
             display: none;
@@ -196,16 +196,16 @@
 							<li class="nav-item">
 								<a href="#">Testimonios</a>
 							</li>
-							
+
 						</ul>
 					</div>
-                    
+
                         <div id="post-form" class="container mt-3">
                             <div class="author-info" >
                                 <img src="http://127.0.0.1:8000/assets/img/profile.jpg" class="author-avatar" alt="Nombre de Usuario">
                                 <p>{{ auth()->user()->nombres }}</p>
                                 <div class="dropdown">
-                                    <button id="toggle-form-button" type="button" class="btn btn-icon btn-round btn-default">
+                                    <button onclick="mostrarPublicar()" id="toggle-form-button" type="button" class="btn btn-icon btn-round btn-default">
                                         <i class="fas fa-chevron-down"></i>
                                     </button>
                                 </div>
@@ -216,15 +216,15 @@
                                     <textarea id="post-text" name="descripcion" placeholder="Escribe tu publicación..."></textarea>
                                     <div id="file-input-container">
                                         <label id="file-label" for="file-input">
-                                            <i class="fas fa-images"></i> 
+                                            <i class="fas fa-images"></i>
                                         </label>
                                         <input type="file" name="imagen" id="file-input" accept="image/*">
                                     </div>
                                     <button type="submit" id="post-button" class="btn btn-primary btn-round">Publicar</button>
                                 </form>
-                            </div> 
+                            </div>
                         </div>
-                     
+
                         <div id="posts">
                             <!-- Aquí se mostrarán las publicaciones -->
                             @foreach ($testimonios as $testimonio)
@@ -266,7 +266,7 @@
                                 @endif
                                 <div class="post-actions" style="display: flex;">
                                     <div >
-                                        @if (in_array($testimonio->id, $likesData)) 
+                                        @if (in_array($testimonio->id, $likesData))
                                             <b><a id="like-button-{{ $testimonio->id }}" data-action="likeMenos" data-id="{{ $testimonio->id }}" class="like-button" style="color: #6861ce;"><i class="fas fa-heart"></i> Me Encanta ({{ $testimonio->likes }})</a></b>
                                         @else
                                             <b><a id="like-button-{{ $testimonio->id }}" data-action="likeMas" data-id="{{ $testimonio->id }}" class="like-button"  style="color: #000;"><i class="fas fa-heart"></i> Me Encanta ({{ $testimonio->likes }})</a></b>
@@ -304,13 +304,13 @@
                                                     {{ $comentario->usuario->nombres }}
                                                 @endif
 
-                                            
+
                                             </div>
                                             <p>{{ $comentario->descripcion }}</p>
                                         </div>
                                     </div>
                                 @endforeach
-                                @if ($testimonio->comentarios > 3) 
+                                @if ($testimonio->comentarios > 3)
                                     <div class="text-center">
                                         <hr>
                                         <b><a href="{{ route('testimonios.show', $testimonio->id) }}" style="color: #6861ce;">Ver Mas </a></b>
@@ -324,6 +324,7 @@
                             <img src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif?20151024034921" alt="Cargando..." width="90">
                         </div>
 				</div>
+   <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 	<script>
          let cont = 2;
          let loading = false;
@@ -338,7 +339,7 @@
         function cargarMasPublicaciones() {
             if (loading) return;
             loading = true;
-             $spinner.show(); 
+             $spinner.show();
             $.get('/testimonios/cargar-mas-publicaciones', { page: cont }, function(data) {
                 if (data.trim() !== "") {
                     $('#posts').append(data);
@@ -347,7 +348,7 @@
                 }else{
                     loading=true;
                 }
-                $spinner.hide(); 
+                $spinner.hide();
             });
         }
 
@@ -431,8 +432,8 @@
             });
 
             //DELETE TESTIMONIO
-            $('.delete-testimonio').on('click', function () {						
-                var id = $(this).data('id');										
+            $('.delete-testimonio').on('click', function () {
+                var id = $(this).data('id');
                 swal({
                     text: '¿Quieres eliminar este testimonio?',
                     icon: 'warning',
@@ -441,7 +442,7 @@
                             visible: true,
                             text : 'Cancelar',
                             color: '#d33',
-                        },        			
+                        },
                         confirm: {
                             text : 'Sí, eliminar',
                             color: '#3085d6',
@@ -463,13 +464,13 @@
                                 console.error(error);
                             }
                         });
-                    } 
+                    }
                 });
             });
 
             //DELETE COMENTARIO
-            $('body').on('click', '.delete-cometario', function () {					
-                var id = $(this).data('id');										
+            $('body').on('click', '.delete-cometario', function () {
+                var id = $(this).data('id');
                 $.ajax({
                     type: 'DELETE',
                     url: "{{ route('comentarios.destroy','') }}" + "/" + id,
@@ -483,13 +484,13 @@
                         console.error(error);
                     }
                 });
-                   
+
             });
 
             //UPDATE TESTIMONIO
             $('.update-form').on('submit', function (e) {
                 e.preventDefault(); // Evita el envío tradicional del formulario
-                var id = $(this).data('id');	
+                var id = $(this).data('id');
                 // Obtiene los datos del formulario
                 var formData = new FormData(this);
 
@@ -515,13 +516,13 @@
 
         });
 
-        
+
 
 
 
         document.addEventListener('DOMContentLoaded', function() {
             const copyLinkButton = document.getElementById('copyLink');
-            
+
             copyLinkButton.addEventListener('click', function(event) {
                 event.preventDefault(); // Evitar que el enlace se abra
 
@@ -555,12 +556,12 @@
             editButton.addEventListener('click', (e) => {
                 e.preventDefault();
                 const postId = e.target.getAttribute('data-id');
-                
+
                 // Ocultar todos los formularios de edición
                 document.querySelectorAll('.edit-form').forEach((editForm) => {
                     editForm.style.display = 'none';
                 });
-                
+
                 // Mostrar el formulario de edición correspondiente al testimonio seleccionado
                 const editForm = document.querySelector(`.edit-form[data-id="${postId}"]`);
                 editForm.style.display = 'block';
@@ -582,10 +583,10 @@
         let likesCount = 0;
 
 
-        const toggleFormButton = document.getElementById("toggle-form-button");
-        const formContainer = document.getElementById("form-container");
 
-        toggleFormButton.addEventListener("click", () => {
+        function mostrarPublicar() {
+            let toggleFormButton = document.getElementById("toggle-form-button");
+            let formContainer = document.getElementById("form-container");
             if (formContainer.style.display === "none") {
                 formContainer.style.display = "block";
                 toggleFormButton.innerHTML = '<i class="fas fa-chevron-up"></i>';
@@ -593,7 +594,7 @@
                 formContainer.style.display = "none";
                 toggleFormButton.innerHTML = '<i class="fas fa-chevron-down"></i>';
             }
-        });
+        }
 
     </script>
 @endsection
