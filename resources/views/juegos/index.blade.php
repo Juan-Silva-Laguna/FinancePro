@@ -172,6 +172,16 @@
       /* background-image: url(''); */
       background-size: cover;
     }
+
+    .texto{
+        font-size: 70px;
+        color: #fff;
+    }
+
+    .contenedor{
+        text-align: center;
+        margin-top: 135px;
+    }
   </style>
 
 <main class="page">
@@ -180,51 +190,203 @@
         <div class="slides">
           <div class="slide">
             <div class="imagen-circular"
-              data-image="https://www.candb.com/site/candb/images/artwork/Joker_Persona-5_Atlus_1920.jpg">
-              <br><br>
-              <center>
-                <h1>Hola Mundo</h1>
-              </center>
+              data-image="{{ asset('assets/img/juegos/SUDOKU.jpg') }}">
+                <div class="contenedor">
+                    <b class="texto">SUDOKU</b>
+                    <br>
+                    <button class="btn btn-secondary"> <i class="fa fa-question-circle"></i>   ¿Como Jugar?</button>
+                    <br><br><br>
+                    <button class="btn"> <i class="fa fa-play"></i>  JUGAR</button>
+                </div>
             </div>
           </div>
           <div class="slide">
             <div class="imagen-circular"
-              data-image="https://i.pinimg.com/474x/f8/db/65/f8db6500941913a22d45717f36a834b2.jpg">
-              <br><br>
-              <center>
-                <h1>Hola Mundo 222</h1>
-              </center>
+              data-image="{{ asset('assets/img/juegos/AHORCADO.jpg') }}">
+                <div class="contenedor">
+                    <b class="texto">AHORCADO</b>
+                    <button class="btn btn-secondary"> <i class="fa fa-question-circle"></i>   ¿Como Jugar?</button>
+                    <br><br><br>
+                    <button class="btn"> <i class="fa fa-play"></i>  JUGAR</button>
+                </div>
             </div>
           </div>
           <div class="slide">
-            <h2>Slide 3</h2>
+            <div class="imagen-circular"
+              data-image="{{ asset('assets/img/juegos/AJEDREZ.jpg') }}">
+                <div class="contenedor">
+                    <b class="texto">AJEDREZ</b>
+                    <br>
+                    <button class="btn btn-secondary"> <i class="fa fa-question-circle"></i>   ¿Como Jugar?</button>
+                    <br><br><br>
+                    <button class="btn"> <i class="fa fa-play"></i>  JUGAR</button>
+                </div>
+            </div>
           </div>
           <div class="slide">
-            <h2>Slide 4</h2>
+            <div class="imagen-circular"
+              data-image="{{ asset('assets/img/juegos/BLOQUES.jpg') }}">
+                <div class="contenedor">
+                    <b class="texto">BLOQUES</b>
+                    <br>
+                    <button class="btn btn-secondary"> <i class="fa fa-question-circle"></i>   ¿Como Jugar?</button>
+                    <br><br><br>
+                    <button class="btn"> <i class="fa fa-play"></i>  JUGAR</button>
+                </div>
+            </div>
           </div>
           <div class="slide">
-            <h2>Slide 5</h2>
+            <div class="imagen-circular"
+              data-image="{{ asset('assets/img/juegos/BOLA COLOR.jpg') }}">
+                <div class="contenedor">
+                    <b class="texto">BOLA COLOR</b>
+                    <br>
+                    <button class="btn btn-secondary"> <i class="fa fa-question-circle"></i>   ¿Como Jugar?</button>
+                    <br><br><br>
+                    <button class="btn"> <i class="fa fa-play"></i>  JUGAR</button>
+                </div>
+            </div>
           </div>
           <div class="slide">
-            <h2>Slide 6</h2>
+            <div class="imagen-circular"
+              data-image="{{ asset('assets/img/juegos/DESCUBRE CAMINO.jpg') }}">
+                <div class="contenedor">
+                    <b class="texto">DESCUBRE CAMINO</b>
+                    <br>
+                    <button class="btn btn-secondary"> <i class="fa fa-question-circle"></i>   ¿Como Jugar?</button>
+                    <br><br><br>
+                    <button class="btn"> <i class="fa fa-play"></i>  JUGAR</button>
+                </div>
+            </div>
           </div>
           <div class="slide">
-            <h2>Slide 7</h2>
+            <div class="imagen-circular"
+              data-image="{{ asset('assets/img/juegos/SIMILAR EMOJI.jpg') }}">
+                <div class="contenedor">
+                    <b class="texto">SIMILAR EMOJI</b>
+                    <br>
+                    <button class="btn btn-secondary"> <i class="fa fa-question-circle"></i>   ¿Como Jugar?</button>
+                    <br><br><br>
+                    <button class="btn"> <i class="fa fa-play"></i>  JUGAR</button>
+                </div>
+            </div>
           </div>
           <div class="slide">
-            <h2>Slide 8</h2>
+            <div class="imagen-circular"
+              data-image="{{ asset('assets/img/juegos/MEMORIZA SONIDO.jpg') }}">
+                <div class="contenedor">
+                    <b class="texto">MEMORIZA SONIDO</b>
+                    <br>
+                    <button class="btn btn-secondary"> <i class="fa fa-question-circle"></i>   ¿Como Jugar?</button>
+                    <br><br><br>
+                    <button class="btn"> <i class="fa fa-play"></i>  JUGAR</button>
+                </div>
+            </div>
           </div>
           <div class="slide">
-            <h2>Slide 9</h2>
+            <div class="imagen-circular"
+              data-image="{{ asset('assets/img/juegos/MEMORIZA IMAGEN.jpg') }}">
+                <div class="contenedor">
+                    <b class="texto">MEMORIZA IMAGEN</b>
+                    <br>
+                    <button class="btn btn-secondary"> <i class="fa fa-question-circle"></i>   ¿Como Jugar?</button>
+                    <br><br><br>
+                    <button class="btn"> <i class="fa fa-play"></i>  JUGAR</button>
+                </div>
+            </div>
+          </div>
+          <div class="slide">
+            <div class="imagen-circular"
+              data-image="{{ asset('assets/img/juegos/NANOGRAMAS.jpg') }}">
+                <div class="contenedor">
+                    <b class="texto">NANOGRAMAS</b>
+                    <br>
+                    <button class="btn btn-secondary"> <i class="fa fa-question-circle"></i>   ¿Como Jugar?</button>
+                    <br><br><br>
+                    <button class="btn"> <i class="fa fa-play"></i>  JUGAR</button>
+                </div>
+            </div>
+          </div>
+          <div class="slide">
+            <div class="imagen-circular"
+              data-image="{{ asset('assets/img/juegos/MIDE NINJA.jpg') }}">
+                <div class="contenedor">
+                    <b class="texto">MIDE NINJA</b>
+                    <br>
+                    <button class="btn btn-secondary"> <i class="fa fa-question-circle"></i>   ¿Como Jugar?</button>
+                    <br><br><br>
+                    <button class="btn"> <i class="fa fa-play"></i>  JUGAR</button>
+                </div>
+            </div>
+          </div>
+          <div class="slide">
+            <div class="imagen-circular"
+              data-image="{{ asset('assets/img/juegos/ROMPECABEZAS 1.jpg') }}">
+                <div class="contenedor">
+                    <b class="texto">ROMPECABEZAS 1</b>
+                    <br>
+                    <button class="btn btn-secondary"> <i class="fa fa-question-circle"></i>   ¿Como Jugar?</button>
+                    <br><br><br>
+                    <button class="btn"> <i class="fa fa-play"></i>  JUGAR</button>
+                </div>
+            </div>
+          </div>
+          <div class="slide">
+            <div class="imagen-circular"
+              data-image="{{ asset('assets/img/juegos/ROMPECABEZAS 2.jpg') }}">
+                <div class="contenedor">
+                    <b class="texto">ROMPECABEZAS 2</b>
+                    <br>
+                    <button class="btn btn-secondary"> <i class="fa fa-question-circle"></i>   ¿Como Jugar?</button>
+                    <br><br><br>
+                    <button class="btn"> <i class="fa fa-play"></i>  JUGAR</button>
+                </div>
+            </div>
+          </div>
+          <div class="slide">
+            <div class="imagen-circular"
+              data-image="{{ asset('assets/img/juegos/CRUCIGRAMA.jpg') }}">
+                <div class="contenedor">
+                    <b class="texto">CRUCIGRAMA</b>
+                    <br>
+                    <button class="btn btn-secondary"> <i class="fa fa-question-circle"></i>   ¿Como Jugar?</button>
+                    <br><br><br>
+                    <button class="btn"> <i class="fa fa-play"></i>  JUGAR</button>
+                </div>
+            </div>
+          </div>
+          <div class="slide">
+            <div class="imagen-circular"
+              data-image="{{ asset('assets/img/juegos/CUBO RUBIK.jpg') }}">
+                <div class="contenedor">
+                    <b class="texto">CUBO RUBIK</b>
+                    <br>
+                    <button class="btn btn-secondary"> <i class="fa fa-question-circle"></i>   ¿Como Jugar?</button>
+                    <br><br><br>
+                    <button class="btn"> <i class="fa fa-play"></i>  JUGAR</button>
+                </div>
+            </div>
+          </div>
+          <div class="slide">
+            <div class="imagen-circular"
+              data-image="{{ asset('assets/img/juegos/LABERINTO.jpg') }}">
+                <div class="contenedor">
+                    <b class="texto">LABERINTO</b>
+                    <br>
+                    <button class="btn btn-secondary"> <i class="fa fa-question-circle"></i>   ¿Como Jugar?</button>
+                    <br><br><br>
+                    <button class="btn"> <i class="fa fa-play"></i>  JUGAR</button>
+                </div>
+            </div>
           </div>
 
         </div>
         <div class="pagination">
           <div class="item">
-            <div class="dot"><span><i class="fa fa-bolt"></i></span></div>
+            <div class="dot"><span><i class="fa fa-calculator"></i></span></div>
           </div>
           <div class="item">
-            <div class="dot"><span><i class="fa fa-rocket"></i></span></div>
+            <div class="dot"><span><i class="fa fa-deaf"></i></span></div>
           </div>
           <div class="item">
             <div class="dot"><span><i class="fa fa-bell"></i></span></div>
@@ -246,6 +408,27 @@
           </div>
           <div class="item">
             <div class="dot"><span><i class="fa fa-home"></i></span></div>
+          </div>
+          <div class="item">
+            <div class="dot"><span><i class="fa fa-table"></i></span></div>
+          </div>
+          <div class="item">
+            <div class="dot"><span><i class="fa fa-home"></i></span></div>
+          </div>
+          <div class="item">
+            <div class="dot"><span><i class="fa fa-table"></i></span></div>
+          </div>
+          <div class="item">
+            <div class="dot"><span><i class="fa fa-table"></i></span></div>
+          </div>
+          <div class="item">
+            <div class="dot"><span><i class="fa fa-table"></i></span></div>
+          </div>
+          <div class="item">
+            <div class="dot"><span><i class="fa fa-table"></i></span></div>
+          </div>
+          <div class="item">
+            <div class="dot"><span><i class="fa fa-table"></i></span></div>
           </div>
         </div>
       </div>

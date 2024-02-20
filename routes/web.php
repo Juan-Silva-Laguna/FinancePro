@@ -81,6 +81,8 @@ Route::middleware(['auth'])->group(function () {
 
     //JUEGOS
     Route::get('/juegos', [JuegosController::class, 'index'])->name('juegos.index');
+    Route::post('/juegos/prueba', [JuegosController::class, 'prueba'])->name('juegos.prueba');
+    Route::get('/prueba', [JuegosController::class, 'pruebaIndex'])->name('prueba');
 
 });
 
