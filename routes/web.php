@@ -81,12 +81,17 @@ Route::middleware(['auth'])->group(function () {
 
     //JUEGOS
     Route::get('/juegos', [JuegosController::class, 'index'])->name('juegos.index');
+<<<<<<< HEAD
     Route::get('/juegos/panel/{juego}', [JuegosController::class, 'panel'])->name('juegos.panel');
     Route::get('/juegos/emojis', [JuegosController::class, 'emojisIndex'])->name('juegos.emojis');
 
     Route::get('/juegos/puzzle1', [JuegosController::class, 'puzzle1Index'])->name('juegos.puzzle1');
 
     // Route::post('/juegos/emojis', [JuegosController::class, 'emojis'])->name('juegos.emojis');
+=======
+    Route::post('/juegos/prueba', [JuegosController::class, 'prueba'])->name('juegos.prueba');
+    Route::get('/prueba', [JuegosController::class, 'pruebaIndex'])->name('prueba');
+>>>>>>> 261d532c5da3b6bd330ffe0bea2c455aecd034c3
 
 });
 
