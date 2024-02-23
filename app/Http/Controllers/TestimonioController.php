@@ -98,8 +98,13 @@ class TestimonioController extends Controller
         $page = $request->get('page');
 
         $testimonios = TestimonioModel::orderBy('testimonios.id', 'desc')->join('users', 'testimonios.id_usuario', '=', 'users.id')->paginate(10, ['*'], 'page', $page);
+        // Obtener los usuarios que le han dado like a los testimonios
+        $likesByTestimonio = LikesTestimonioModel::selectRaw('GROUP_CONCAT(id_testimonio) as mis_likes')
+        ->where('id_usuario', auth()->user()->id)
+        ->first();
 
-        return view('cargar-mas-publicaciones', compact('testimonios'));
+        $likesData = explode(',', $likesByTestimonio->mis_likes);
+        return view('cargar-mas-publicaciones', compact('testimonios', 'likesData'));
     }
 
     public function store(Request $request)
@@ -108,7 +113,7 @@ class TestimonioController extends Controller
             'descripcion' => 'required',
             'imagen' => 'image|mimes:jpeg,png,jpg,gif|max:2048', // Define image upload validation rules.
         ]);
-    
+
         if ($request->hasFile('imagen')) {
             $image = $request->file('imagen');
             $imageName = time() . '.' . $image->getClientOriginalExtension();
@@ -116,7 +121,7 @@ class TestimonioController extends Controller
         } else {
             $imageName = null; // Set a default image if no image is provided.
         }
-        
+
         TestimonioModel::create([
             'imagen' => $imageName,
             'descripcion' => $request->input('descripcion'),
@@ -157,7 +162,7 @@ class TestimonioController extends Controller
         // Verifica si la imagen existe en el sistema de archivos
         if ($testimonio->imagen != null && file_exists($imagenPath)) {
             unlink($imagenPath);
-        } 
+        }
 
         $testimonio->delete();
         return $testimonio;
@@ -174,23 +179,23 @@ class TestimonioController extends Controller
         }
 
         $like = LikesTestimonioModel::where('id_usuario', auth()->user()->id)->where('id_testimonio', $id)->first();
-        
+
         if ($like!=null) {
             //likeMenos
             $testimonio->update([
                 'likes' => $testimonio->likes=$testimonio->likes-1,
             ]);
-    
+
             LikesTestimonioModel::where('id_usuario', auth()->user()->id)->where('id_testimonio', $id)->delete();
         }else{
             //likeMas
             $testimonio->update([
                 'likes' => $testimonio->likes=$testimonio->likes+1,
             ]);
-          
+
             LikesTestimonioModel::create([
                 'id_testimonio' => $id,
-                'id_usuario' => auth()->user()->id, 
+                'id_usuario' => auth()->user()->id,
             ]);
         }
         return $testimonio;
@@ -203,7 +208,7 @@ class TestimonioController extends Controller
     {
         // Encuentra el testimonio por su ID
         $testimonio = TestimonioModel::find($id);
-    
+
         // Verifica si el testimonio existe
         if (!$testimonio) {
             return redirect()->route('testimonios.index')->with('error', 'El testimonio no existe.');
@@ -212,16 +217,16 @@ class TestimonioController extends Controller
         $testimonio->update([
             'comentarios' => $testimonio->comentarios=$testimonio->comentarios+1,
         ]);
-      
+
         $comment = ComentariosTestimonioModel::create([
             'descripcion' => $request->input('comentario'),
             'id_testimonio' => $id,
-            'id_usuario' => auth()->user()->id, 
+            'id_usuario' => auth()->user()->id,
         ]);
 
         return response()->json(['comentario' => $comment]);
     }
-    
+
     public function deleteComentario($id)
     {
         // Encuentra el testimonio por su ID
@@ -239,7 +244,7 @@ class TestimonioController extends Controller
 
 
         $comentario->delete();
-        
+
         return response()->json(['success' => 1]);
     }
 

@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TestimonioController;
 use App\Http\Controllers\CursosController;
 use App\Http\Controllers\PeliculasController;
+use App\Http\Controllers\LibrosController;
+use App\Http\Controllers\JuegosController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -64,10 +66,27 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/peliculas/playlist/{id}', [PeliculasController::class, 'playlist'])->name('playlist.peliculas');
 
     //--------falta ajustar los filtros para estas vistas
-    Route::get('/peliculas/mi_lista', [PeliculasController::class, 'buscarMiLista'])->name('peliculas.buscar');
-    Route::get('/peliculas/me_gustan', [PeliculasController::class, 'buscarMeGustan'])->name('peliculas.buscar');
+    Route::get('/peliculas/mi_lista', [PeliculasController::class, 'buscarMiLista'])->name('peliculas.mi_lista');
+    Route::get('/peliculas/me_gustan', [PeliculasController::class, 'buscarMeGustan'])->name('peliculas.me_gustan');
+
+    //LIBROS
+    Route::get('/libros/ver/{id}', [LibrosController::class, 'show'])->name('libros.ver');
+    Route::get('/libros', [LibrosController::class, 'index'])->name('libros.index');
+    Route::post('/libros/buscar', [LibrosController::class, 'buscar'])->name('libros.buscar');
+    Route::get('/libros/like/{id}', [LibrosController::class, 'like'])->name('like.libros');
+    Route::get('/libros/visto/{id}/{pagina}', [LibrosController::class, 'libroVisto'])->name('visto.libros');
+    Route::get('/libros/mi_lista', [LibrosController::class, 'lista'])->name('libros.lista');
+    Route::get('/libros/iniciados', [LibrosController::class, 'leidos'])->name('libros.leidos');
 
 
+    //JUEGOS
+    Route::get('/juegos', [JuegosController::class, 'index'])->name('juegos.index');
+    Route::get('/juegos/panel/{juego}', [JuegosController::class, 'panel'])->name('juegos.panel');
+    Route::get('/juegos/emojis', [JuegosController::class, 'emojisIndex'])->name('juegos.emojis');
+
+    Route::get('/juegos/puzzle1', [JuegosController::class, 'puzzle1Index'])->name('juegos.puzzle1');
+
+    // Route::post('/juegos/emojis', [JuegosController::class, 'emojis'])->name('juegos.emojis');
 
 });
 
