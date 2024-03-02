@@ -81,17 +81,19 @@ Route::middleware(['auth'])->group(function () {
 
     //JUEGOS
     Route::get('/juegos', [JuegosController::class, 'index'])->name('juegos.index');
-<<<<<<< HEAD
     Route::get('/juegos/panel/{juego}', [JuegosController::class, 'panel'])->name('juegos.panel');
     Route::get('/juegos/emojis', [JuegosController::class, 'emojisIndex'])->name('juegos.emojis');
 
     Route::get('/juegos/puzzle1', [JuegosController::class, 'puzzle1Index'])->name('juegos.puzzle1');
+    Route::get('/juegos/puzzle2', [JuegosController::class, 'puzzle2Index'])->name('juegos.puzzle2');
+    Route::get('/juegos/sudoku', [JuegosController::class, 'sudokuIndex'])->name('juegos.sudoku');
+    Route::get('/juegos/ahorcado', [JuegosController::class, 'ahorcadoIndex'])->name('juegos.ahorcado');
+    Route::get('/juegos/ajedrez', [JuegosController::class, 'ajedrezIndex'])->name('juegos.ajedrez');
+    Route::get('/juegos/bloques', [JuegosController::class, 'bloquesIndex'])->name('juegos.bloques');
+    Route::get('/juegos/bola_color', [JuegosController::class, 'bolaColorIndex'])->name('juegos.bola_color');
+    Route::get('/juegos/descubre_camino', [JuegosController::class, 'descubreCaminoIndex'])->name('juegos.descubre_camino');
 
     // Route::post('/juegos/emojis', [JuegosController::class, 'emojis'])->name('juegos.emojis');
-=======
-    Route::post('/juegos/prueba', [JuegosController::class, 'prueba'])->name('juegos.prueba');
-    Route::get('/prueba', [JuegosController::class, 'pruebaIndex'])->name('prueba');
->>>>>>> 261d532c5da3b6bd330ffe0bea2c455aecd034c3
 
 });
 
