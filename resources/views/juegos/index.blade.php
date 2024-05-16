@@ -304,7 +304,7 @@
                     <br>
                     <button class="btn btn-secondary"> <i class="fa fa-question-circle"></i>   ¿Como Jugar?</button>
                     <br><br>
-                    <button class="btn"> <i class="fa fa-play"></i>  JUGAR</button>
+                    <a href="{{ route('juegos.panel', 'crucigrama') }}" class="btn btn-light"> <i class="fa fa-play"></i>  JUGAR</a>
                 </div>
             </div>
           </div>
@@ -316,7 +316,7 @@
                     <br>
                     <button class="btn btn-secondary"> <i class="fa fa-question-circle"></i>   ¿Como Jugar?</button>
                     <br><br>
-                    <button class="btn"> <i class="fa fa-play"></i>  JUGAR</button>
+                    <a href="{{ route('juegos.panel', 'cubo') }}" class="btn btn-light"> <i class="fa fa-play"></i>  JUGAR</a>
                 </div>
             </div>
           </div>
@@ -328,7 +328,7 @@
                     <br>
                     <button class="btn btn-secondary"> <i class="fa fa-question-circle"></i>   ¿Como Jugar?</button>
                     <br><br>
-                    <button class="btn"> <i class="fa fa-play"></i>  JUGAR</button>
+                    <a href="{{ route('juegos.panel', 'laberinto') }}" class="btn btn-light"> <i class="fa fa-play"></i>  JUGAR</a>
                 </div>
             </div>
           </div>

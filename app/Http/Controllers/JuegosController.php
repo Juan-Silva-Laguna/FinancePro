@@ -74,4 +74,16 @@ class JuegosController extends Controller
     public function descubreCaminoIndex() {
         return view('juegos.descubre_camino');
     }
+
+    public function crucigramaIndex() {
+        return view('juegos.crucigrama');
+    }
+
+    public function cuboIndex() {
+        return view('juegos.cubo');
+    }
+
+    public function laberintoIndex() {
+        return view('juegos.laberinto');
+    }
 }

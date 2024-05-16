@@ -92,6 +92,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/juegos/bloques', [JuegosController::class, 'bloquesIndex'])->name('juegos.bloques');
     Route::get('/juegos/bola_color', [JuegosController::class, 'bolaColorIndex'])->name('juegos.bola_color');
     Route::get('/juegos/descubre_camino', [JuegosController::class, 'descubreCaminoIndex'])->name('juegos.descubre_camino');
+    Route::get('/juegos/crucigrama', [JuegosController::class, 'crucigramaIndex'])->name('juegos.crucigrama');
+    Route::get('/juegos/cubo', [JuegosController::class, 'cuboIndex'])->name('juegos.cubo');
+    Route::get('/juegos/laberinto', [JuegosController::class, 'laberintoIndex'])->name('juegos.laberinto');
 
     // Route::post('/juegos/emojis', [JuegosController::class, 'emojis'])->name('juegos.emojis');
 
