@@ -96,7 +96,6 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/juegos/cubo', [JuegosController::class, 'cuboIndex'])->name('juegos.cubo');
     Route::get('/juegos/laberinto', [JuegosController::class, 'laberintoIndex'])->name('juegos.laberinto');
 
-    // Route::post('/juegos/emojis', [JuegosController::class, 'emojis'])->name('juegos.emojis');
 
 });
 
